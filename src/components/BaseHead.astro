@@ -1,13 +1,13 @@
 ---
-interface Props {
-  title: string;
-  description: string;
-  canonicalUrl: string;
-  image?: string;
-}
+interface Props { title: string; description: string; canonicalUrl: string; image?: string; }
 import { business } from '../data/business';
 const { title, description, canonicalUrl, image = business.ogImage } = Astro.props;
 const ogImage = new URL(image, Astro.site ?? Astro.url).toString();
+const faq = [
+  { q: 'Apakah Narina Beauty Store melayani grosir dan reseller?', a: 'Ya. Narina melayani ecer, grosir, dan reseller skincare original. Syarat dan pricelist grosir bisa diminta via WhatsApp admin.' },
+  { q: 'Di mana lokasi Narina Beauty Store Jambi?', a: 'Jl Jend Sudirman, Thehok, deretan Transmart Jambi, Kota Jambi. Rute lengkap tersedia via tombol Google Maps di halaman tentang.' },
+  { q: 'Bagaimana cara cek stok sebelum datang?', a: 'Chat WhatsApp admin dengan format nama produk. Harga di website estimasi dan dikonfirmasi admin sebelum pembayaran.' },
+];
 ---
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -23,20 +23,21 @@ const ogImage = new URL(image, Astro.site ?? Astro.url).toString();
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
 <meta property="og:image" content={ogImage} />
+<meta property="og:locale" content="id_ID" />
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:url" content={canonicalUrl} />
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={ogImage} />
 <script type="application/ld+json" set:html={JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "Store",
-  name: business.name,
-  url: Astro.site?.toString(),
-  image: ogImage,
-  description: description,
+  "@context": "https://schema.org", "@type": "Store",
+  name: business.name, url: Astro.site?.toString(), image: ogImage, description: description,
+  knowsAbout: ["skincare original", "grosir kosmetik Jambi", "reseller skincare Thehok"],
   address: { "@type": "PostalAddress", streetAddress: business.address, addressLocality: business.city, addressRegion: "Jambi", addressCountry: "ID" },
-  telephone: business.phone,
-  openingHours: business.hours,
+  telephone: business.phone, openingHours: "Mo-Su 09:00-22:00",
   aggregateRating: { "@type": "AggregateRating", ratingValue: business.rating, reviewCount: business.reviewCount }
+})} />
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org", "@type": "FAQPage",
+  mainEntity: faq.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } }))
 })} />

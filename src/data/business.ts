@@ -15,8 +15,8 @@ export const business = {
   hoursStatus: 'Estimasi',
   instagram: 'https://www.instagram.com/narinabeauty_store',
   instagramLabel: '@narinabeauty_store • 21.7K pengikut',
-  title: 'Narina Beauty Store Jambi — Skincare Original & Grosir',
-  description: 'Narina Beauty Store Jambi di Jl Jend Sudirman Thehok: skincare original ecer, grosir & reseller. Cek stok via WA, harga estimasi.',
+  title: 'Narina Beauty Store Jambi — Skincare Original Thehok',
+  description: 'Narina Beauty Store Jl Sudirman Thehok Jambi: skincare original ecer, grosir & reseller 21,7rb followers. Cek stok via WA, harga estimasi.',
   canonicalPath: '/',
   ogImage: '/images/narina-hero.jpg',
 };

@@ -4,28 +4,19 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --ease-premium: cubic-bezier(0.16, 1, 0.3, 1);
-}
-
+:root { --ease-premium: cubic-bezier(0.16, 1, 0.3, 1); }
 html { scroll-behavior: smooth; }
-
 body {
   font-family: 'Outfit', ui-sans-serif, system-ui, sans-serif;
-  background: #f9fafb;
-  color: #09090b;
+  background: #faf7f5; color: #09090b;
   -webkit-font-smoothing: antialiased;
 }
-
 .font-mono-num { font-family: 'JetBrains Mono', ui-monospace, monospace; }
-
 .reveal { animation: rise 0.7s var(--ease-premium) both; }
-@keyframes rise {
-  from { opacity: 0; transform: translateY(18px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .reveal { animation: none; }
-  html { scroll-behavior: auto; }
-}
+.d-1 { animation-delay: 0.06s; } .d-2 { animation-delay: 0.12s; }
+.d-3 { animation-delay: 0.18s; } .d-4 { animation-delay: 0.24s; }
+.d-5 { animation-delay: 0.3s; } .d-6 { animation-delay: 0.36s; }
+@keyframes rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+.img-fallback { background: linear-gradient(135deg, #ffe4e6, #fecdd3); }
+img { background: #f4f4f5; }
+@media (prefers-reduced-motion: reduce) { .reveal { animation: none; } html { scroll-behavior: auto; } }
