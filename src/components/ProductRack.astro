@@ -1,0 +1,33 @@
+---
+/* Ref: botanical editorial — rak katalog ber-rule: foto kecil + nama + jenis/label + CTA.
+   Sengaja daftar berbaris (bukan grid 3 kolom sama besar). */
+import { business, waLink } from '../data/business';
+interface P { name: string; price: string; badge: string; stock: string; image: string; alt: string; w: number; h: number; source: string; }
+interface Props { items: P[]; showSource?: boolean; titleTag?: 'h2' | 'h3'; }
+const { items, showSource = false, titleTag = 'h3' } = Astro.props;
+const Tag = titleTag;
+---
+<ol class="divide-y divide-moss/30 border-y border-moss/40">
+  {items.map((p, i) => {
+    const msg = waLink(`Halo ${business.name}, saya mau tanya stok ${p.name} (${p.price}). Apakah ready?`);
+    return (
+      <li class="rack-row grid grid-cols-[auto_1fr] sm:grid-cols-[auto_1fr_auto] items-center gap-x-4 sm:gap-x-6 gap-y-3 py-5 min-w-0" data-badge={p.badge}>
+        <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl overflow-hidden bg-paper-2 shrink-0">
+          <img src={p.image} alt={p.alt} width={p.w} height={p.h} loading="lazy" decoding="async" class="rack-img w-full h-full object-cover" />
+        </div>
+        <div class="min-w-0">
+          <p class="font-mono-num text-[11px] font-semibold tracking-[0.16em] uppercase text-moss-ink">{String(i + 1).padStart(2, '0')} &middot; {p.badge}</p>
+          <Tag class="mt-1 font-display text-xl sm:text-2xl leading-tight break-words">{p.name}</Tag>
+          <p class="mt-1 text-sm text-ink-soft">
+            <span class="font-mono-num">{p.price}</span> &middot; {p.stock}
+          </p>
+          {showSource && <p class="mt-1 text-xs text-moss-ink max-w-[52ch]">{p.source}</p>}
+        </div>
+        <a href={msg} target="_blank" rel="noopener" class="col-span-2 sm:col-span-1 justify-self-start sm:justify-self-end inline-flex items-center gap-2 border border-ink/25 px-5 py-2.5 min-h-[44px] rounded-full text-sm font-semibold text-ink hover:border-accent hover:text-accent active:scale-[0.98] transition">
+          Tanya stok
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+        </a>
+      </li>
+    );
+  })}
+</ol>

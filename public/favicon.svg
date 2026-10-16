@@ -1,1 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" font-size="90">💄</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Narina Beauty Store">
+  <rect width="32" height="32" rx="8" fill="#EEE7DD" />
+  <path d="M16 24V11M16 16c-4 0-7-2-7-6 4 0 7 2 7 6Zm0 0c4 0 7-2 7-6-4 0-7 2-7 6Z" fill="none" stroke="#795E4E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+  <circle cx="16" cy="8" r="1.5" fill="#8A8C70" />
+</svg>

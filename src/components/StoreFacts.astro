@@ -1,0 +1,25 @@
+---
+/* Ref: botanical editorial — info toko ringkas sebagai <dl> ber-rule.
+   Hanya memakai field yang ada di business.ts (tanpa mengarang alamat/jam/nomor). */
+import { business, waLink } from '../data/business';
+const wa = waLink(`Halo ${business.name}, saya mau tanya stok dan jam buka.`);
+const rows = [
+  { k: 'Alamat', v: business.address, note: `Status: ${business.addressStatus}`, href: business.mapsUrl, external: true },
+  { k: 'Jam buka', v: business.hours, note: `Status: ${business.hoursStatus}` },
+  { k: 'WhatsApp', v: business.phoneDisplay, note: 'Konfirmasi stok & harga', href: wa, external: true },
+  { k: 'Instagram', v: '@narinabeauty_store', note: 'Akun resmi toko', href: business.instagram, external: true },
+];
+---
+<dl class="divide-y divide-moss/30 border-y border-moss/40">
+  {rows.map((r) => (
+    <div class="grid grid-cols-1 sm:grid-cols-[8rem_1fr] gap-1 sm:gap-6 py-5 min-w-0">
+      <dt class="text-[11px] font-semibold tracking-[0.16em] uppercase text-moss-ink sm:pt-1.5">{r.k}</dt>
+      <dd class="min-w-0">
+        <span class="font-display text-xl leading-snug break-words">
+          {r.href ? <a href={r.href} target={r.external ? '_blank' : undefined} rel={r.external ? 'noopener' : undefined} class="underline underline-offset-4 decoration-moss/50 hover:decoration-accent">{r.v}</a> : r.v}
+        </span>
+        <span class="mt-1 block text-sm text-ink-soft">{r.note}</span>
+      </dd>
+    </div>
+  ))}
+</dl>

@@ -1,53 +1,125 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root { --ease-premium: cubic-bezier(0.16, 1, 0.3, 1); }
-html { scroll-behavior: smooth; }
-body {
-  font-family: 'Outfit', ui-sans-serif, system-ui, sans-serif;
-  background: #faf7f5; color: #09090b;
-  -webkit-font-smoothing: antialiased;
+/* Narina Beauty Store — "botanical beauty editorial"
+   Palet: paper/ink + tint blush & moss + satu accent coklat tanah.
+   Font: Cormorant Garamond (display serif botanikal) + Jost (body/UI).
+   Catatan kontras: --ink-soft dinaikkan ke .72 dan label memakai --moss-ink
+   karena --moss murni (2.85:1) tidak lolos AA bila dipakai sebagai teks. */
+:root {
+  --paper: #EEE7DD;
+  --paper-2: #E5DBCB;
+  --ink: #302821;
+  --ink-soft: rgba(48, 40, 33, .72);
+  --blush: #D7B8A8;
+  --moss: #8A8C70;
+  --moss-ink: #5A5C42;
+  --accent: #795E4E;
+  --ease-botanical: cubic-bezier(0.16, 1, 0.3, 1);
 }
-.font-mono-num { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
-.reveal { animation: rise 0.7s var(--ease-premium) both; }
-.d-1 { animation-delay: 0.06s; } .d-2 { animation-delay: 0.12s; }
-.d-3 { animation-delay: 0.18s; } .d-4 { animation-delay: 0.24s; }
-.d-5 { animation-delay: 0.3s; } .d-6 { animation-delay: 0.36s; }
-@keyframes rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
-.img-fallback { background: linear-gradient(135deg, #ffe4e6, #fecdd3); }
-img { background: #f4f4f5; }
-@media (prefers-reduced-motion: reduce) { .reveal { animation: none; } html { scroll-behavior: auto; } }
 
-/* ==== overhaul: responsive guard + shared components (CSS-only, tanpa dep baru) ==== */
-html, body { max-width: 100%; overflow-x: clip; }
-img { max-width: 100%; height: auto; }
-.marquee { overflow: hidden; max-width: 100%; }
-.marquee-track { display: inline-flex; gap: 2.5rem; padding-right: 2.5rem; animation: slide 22s linear infinite; will-change: transform; }
-@keyframes slide { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-/* hamburger CSS-only: menu slide-down */
-.nav-panel { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s cubic-bezier(0.16,1,0.3,1); }
-.nav-panel > div { overflow: hidden; min-height: 0; }
-#nav-toggle:checked ~ div .icon-open { display: none; }
-#nav-toggle:checked ~ div .icon-close { display: block; }
-#nav-toggle:checked ~ .nav-panel { grid-template-rows: 1fr; }
-/* katalog skeleton shimmer */
-.skeleton { position: relative; overflow: hidden; background: rgba(127,127,127,0.14); }
-.skeleton::after { content: ""; position: absolute; inset: 0; transform: translateX(-100%); background: linear-gradient(90deg, transparent, rgba(255,255,255,0.45), transparent); animation: shimmer 1.4s infinite; }
-@keyframes shimmer { to { transform: translateX(100%); } }
-/* FAQ details */
-details.faq { border-radius: 1.5rem; }
-details.faq summary { cursor: pointer; list-style: none; min-height: 48px; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
-details.faq summary::-webkit-details-marker { display: none; }
-details.faq summary .plus { transition: transform 0.3s cubic-bezier(0.16,1,0.3,1); flex: none; }
-details.faq[open] summary .plus { transform: rotate(45deg); }
-/* form: target sentuh + error text */
-input, select, textarea { min-height: 48px; }
-.field-err { display: none; }
-.field-invalid .field-err { display: block; }
-/* tabel: wrapper scroll-x */
-.table-wrap { overflow-x: auto; max-width: 100%; }
-/* cegah teks terpotong di kartu */
-.card-clamp { overflow-wrap: anywhere; }
-@media (prefers-reduced-motion: reduce) { .marquee-track, .skeleton::after { animation: none; } }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Jost', ui-sans-serif, system-ui, sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Display serif botanikal: Cormorant Garamond */
+h1, h2, h3, .font-display {
+  font-family: 'Cormorant Garamond', Georgia, Cambria, 'Times New Roman', serif;
+  font-weight: 600;
+}
+h1, h2 { letter-spacing: -0.01em; }
+
+/* Angka/etiket teknis: tabular, di dalam keluarga body */
+.font-mono-num { font-variant-numeric: tabular-nums; letter-spacing: 0.03em; }
+
+/* Skip-link (aksesibilitas keyboard) */
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  z-index: 60;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 0.75rem 1.25rem;
+  border-radius: 999px;
+  font-weight: 600;
+  transition: top 0.2s var(--ease-botanical);
+}
+.skip-link:focus { top: 0.75rem; }
+
+/* Fokus keyboard jelas di seluruh situs */
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 0.35rem;
+}
+
+/* Animasi masuk: transform + opacity saja, stagger via --i (tanpa scroll listener) */
+.reveal {
+  animation: rise 0.7s var(--ease-botanical) both;
+  animation-delay: calc(var(--i, 0) * 90ms);
+}
+@keyframes rise {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Kolase hero: foto utama melebur ke paper (mask, bukan glow) */
+.photo-fade {
+  -webkit-mask-image: linear-gradient(to right, #000 78%, transparent 100%);
+  mask-image: linear-gradient(to right, #000 78%, transparent 100%);
+}
+@media (max-width: 767px) {
+  .photo-fade {
+    -webkit-mask-image: linear-gradient(to bottom, #000 84%, transparent 100%);
+    mask-image: linear-gradient(to bottom, #000 84%, transparent 100%);
+  }
+}
+
+/* Rak katalog bergaya editorial: zoom foto halus saat hover */
+.rack-row .rack-img { transition: transform 0.6s var(--ease-botanical); }
+.rack-row:hover .rack-img { transform: scale(1.05); }
+
+/* Langkah kebutuhan: asimetris — tiap baris menjorok lebih jauh (motif "naik langkah") */
+.need-row { margin-left: 0; }
+@media (min-width: 768px) {
+  .need-row { margin-left: calc(var(--i, 0) * 1.5rem); }
+}
+
+/* FAQ accordion: plus berputar (transform only) */
+.faq summary { list-style: none; cursor: pointer; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq .faq-plus { transition: transform 0.3s var(--ease-botanical); }
+.faq[open] .faq-plus { transform: rotate(45deg); }
+
+/* Filter label katalog: state terpilih deterministik via aria-pressed */
+.filter-btn[aria-pressed="true"] {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--paper);
+}
+.filter-btn[aria-pressed="true"]:hover { color: var(--paper); }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { animation: none; }
+  html { scroll-behavior: auto; }
+  .rack-row .rack-img,
+  .rack-row:hover .rack-img { transition: none; transform: none; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

@@ -1,0 +1,37 @@
+---
+/* Ref: botanical editorial — tiga langkah kebutuhan sebagai list bernomor ber-rule.
+   Asimetris: kepala section 5 kolom, daftar 6 kolom menjorok, tiap baris makin inden (motif naik langkah). */
+interface Step { t: string; d: string; }
+interface Props {
+  steps: Step[];
+  kicker?: string;
+  title?: string;
+  desc?: string;
+}
+const {
+  steps,
+  kicker = 'Tiga langkah',
+  title = 'Cara memilih rangkaian yang tepat',
+  desc = 'Tidak perlu langsung borong banyak produk — mulai dari yang paling kamu butuhkan.',
+} = Astro.props;
+---
+<section aria-label="Langkah memilih produk" class="min-w-0">
+  <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-start">
+    <div class="md:col-span-5 min-w-0">
+      <p class="text-[11px] font-semibold tracking-[0.18em] uppercase text-moss-ink">{kicker}</p>
+      <h2 class="mt-3 font-display text-3xl md:text-4xl leading-[1.05] max-w-[20ch]">{title}</h2>
+      <p class="mt-4 text-[15px] leading-relaxed text-ink-soft max-w-[48ch]">{desc}</p>
+    </div>
+    <ol class="md:col-span-6 md:col-start-7 border-t border-moss/40">
+      {steps.map((s, i) => (
+        <li class="need-row grid grid-cols-[auto_1fr] gap-4 sm:gap-6 py-6 border-b border-moss/30 min-w-0" style={`--i:${i}`}>
+          <span class="font-display text-3xl sm:text-4xl leading-none text-blush sm:text-accent" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+          <div class="min-w-0">
+            <h3 class="font-display text-xl sm:text-2xl leading-snug">{s.t}</h3>
+            <p class="mt-1.5 text-[15px] leading-relaxed text-ink-soft max-w-[46ch]">{s.d}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>

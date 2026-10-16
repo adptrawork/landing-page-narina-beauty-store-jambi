@@ -1,0 +1,18 @@
+---
+/* Ref: botanical editorial — FAQ accordion ber-rule (<details>/<summary>).
+   State terbuka/tutup native diekspos ke AT; ikon plus berputar (transform only). */
+interface Item { q: string; a: string; }
+interface Props { faqs: Item[]; }
+const { faqs } = Astro.props;
+---
+<div class="divide-y divide-moss/30 border-y border-moss/40">
+  {faqs.map((f) => (
+    <details class="faq py-4 min-w-0">
+      <summary class="font-medium text-[15px] sm:text-base grid grid-cols-[1fr_auto] items-center gap-4 min-h-[48px] min-w-0">
+        <span class="min-w-0 break-words">{f.q}</span>
+        <svg class="faq-plus text-accent shrink-0" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14" /></svg>
+      </summary>
+      <p class="mt-2 text-[15px] leading-relaxed text-ink-soft max-w-[62ch]">{f.a}</p>
+    </details>
+  ))}
+</div>

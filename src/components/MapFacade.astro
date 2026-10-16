@@ -1,0 +1,18 @@
+---
+interface Props {
+  embed: string;
+  title?: string;
+}
+const { embed, title = 'Peta Narina Beauty Store' } = Astro.props;
+---
+<!-- Ref: peta facade — iframe Google Maps disuntik hanya saat tombol diklik (tanpa iframe langsung) -->
+<section aria-label="Peta lokasi" class="min-w-0">
+  <div class="mapfacade rounded-3xl overflow-hidden border border-moss/40 bg-paper-2" data-embed={embed} data-title={title}>
+    <div class="aspect-[4/3] grid place-content-center gap-3 p-6 text-center">
+      <svg class="mx-auto text-moss-ink" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.4 7-11a7 7 0 1 0-14 0c0 4.6 7 11 7 11Z" /><circle cx="12" cy="10" r="2.5" /></svg>
+      <p class="font-display text-xl">Peta dimuat sesuai permintaan</p>
+      <p class="text-sm text-ink-soft max-w-[40ch] mx-auto">Peta Google baru dimuat setelah kamu menekan tombol &mdash; agar halaman tetap ringan.</p>
+      <button type="button" data-loadmap class="mt-1 bg-accent text-paper px-6 py-3 min-h-[48px] inline-flex items-center justify-center rounded-full text-sm font-semibold hover:opacity-90 active:scale-[0.98] transition">Muat peta interaktif</button>
+    </div>
+  </div>
+</section>
