@@ -27,7 +27,11 @@ Prioritas: 1) situs milik target, 2) situs resmi brand disalin lokal ke public/i
 - narina-p3.jpg <- facetology.id Store API Triple Care Sunscreen SPF40 40ML
 - narina-p6.jpg <- eminacosmetics.com homepage thumb (generik, varian konfirmasi WA)
 - narina-hero.jpg <- linktr.ee/narinabeauty_store avatar (foto profil resmi toko)
-- Slot picsum: narina-4 (Azarine), narina-5 (Wardah), narina-7 (Scarlett), narina-8 (OMG)
+- narina-p4.jpg (640x748, 29KB) <- Wikimedia Commons "Nivea Creme" oleh Susana22BN (CC BY-SA 4.0) — ilustrasi generik krim pelembap untuk Azarine Hydrasoothe
+- narina-p5.jpg (600x800, 86KB) <- Wikimedia Commons "Daylogic Sheer Touch SPF 30" oleh Missvain (CC BY 4.0) — ilustrasi generik sunscreen tube untuk Wardah UV Shield
+- narina-p7.jpg (800x664, 89KB) <- Wikimedia Commons "After-Sun-Lotion" oleh Tamina212 (CC BY-SA 4.0) — ilustrasi generik botol losion untuk Scarlett
+- narina-p8.jpg (800x536, 69KB) <- Wikimedia Commons "Batons Make B @ SPFW" oleh O Boticário SPFW (CC BY 2.0) — ilustrasi generik lipstik untuk OMG Lip Cream
+- Slot picsum: NOL (semua sudah lokal; foto brand official tetap prioritas bila tersedia)
 
 ### URL terblokir / tidak bisa di-scrape
 
