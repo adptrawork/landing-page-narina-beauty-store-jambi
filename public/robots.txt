@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://narinabeauty-jambi.pages.dev/sitemap-index.xml
