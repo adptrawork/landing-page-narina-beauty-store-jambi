@@ -5,13 +5,13 @@
 /* Narina Beauty Store — "botanical beauty editorial"
    Palet: paper/ink + tint blush & moss + satu accent coklat tanah.
    Font: Cormorant Garamond (display serif botanikal) + Jost (body/UI).
-   Catatan kontras: --ink-soft dinaikkan ke .72 dan label memakai --moss-ink
+   Catatan kontras: --ink-soft dinaikkan ke .75 dan label memakai --moss-ink
    karena --moss murni (2.85:1) tidak lolos AA bila dipakai sebagai teks. */
 :root {
   --paper: #EEE7DD;
   --paper-2: #E5DBCB;
   --ink: #302821;
-  --ink-soft: rgba(48, 40, 33, .72);
+  --ink-soft: rgba(48, 40, 33, .75);
   --blush: #D7B8A8;
   --moss: #8A8C70;
   --moss-ink: #5A5C42;

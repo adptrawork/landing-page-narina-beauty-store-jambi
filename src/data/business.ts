@@ -18,7 +18,7 @@ export const business = {
   title: 'Narina Beauty Store Jambi — Skincare Original Thehok',
   description: 'Narina Beauty Store Jl Sudirman Thehok Jambi: skincare original ecer, grosir & reseller 21,7rb followers. Cek stok via WA, harga estimasi.',
   canonicalPath: '/',
-  ogImage: '/images/narina-hero.jpg',
+  ogImage: '/images/narina-hero.webp',
 };
 
 export const socials: Array<{ label: string; url: string; note: string }> = [
@@ -36,14 +36,14 @@ export const waLink = (message: string) =>
   `https://wa.me/${business.phone}?text=${encodeURIComponent(message)}`;
 
 export const products = [
-  { name: 'Skintific 5X Ceramide Series', price: 'Rp 130–155rb', badge: 'Teruji', stock: 'Tanya Stok', image: '/images/narina-p1.jpg', alt: 'Skintific 5X Ceramide Barrier Repair Moisture Gel — foto resmi brand', w: 800, h: 800, source: 'Sumber: skintific.com (official)' },
-  { name: 'Glad2Glow Centella Series', price: 'Rp 55–75rb', badge: 'Teruji', stock: 'Tanya Stok', image: '/images/narina-p2.jpg', alt: 'Glad2Glow Centella Allantoin Soothing Gel Moisturizer — foto resmi brand', w: 800, h: 800, source: 'Sumber: glad2glow.com (official)' },
-  { name: 'Facetology Sunscreen Series', price: 'Rp 65–85rb', badge: 'Teruji', stock: 'Tanya Stok', image: '/images/narina-p3.jpg', alt: 'Facetology Triple Care Sunscreen SPF 40 — foto resmi brand', w: 800, h: 800, source: 'Sumber: facetology.id (official)' },
-  { name: 'Azarine Hydrasoothe Series', price: 'Rp 60–75rb', badge: 'Estimasi', stock: 'Tanya Stok', image: '/images/narina-p4.jpg', alt: 'Ilustrasi generik kemasan tin krim pelembap — bukan foto produk Azarine, konfirmasi varian via WA', w: 640, h: 748, source: 'Sumber: Wikimedia Commons — Nivea Creme oleh Susana22BN (CC BY-SA 4.0)' },
-  { name: 'Wardah UV Shield Series', price: 'Rp 35–50rb', badge: 'Estimasi', stock: 'Tanya Stok', image: '/images/narina-p5.jpg', alt: 'Ilustrasi generik tube sunscreen lotion SPF 30 — bukan foto produk Wardah, konfirmasi varian via WA', w: 600, h: 800, source: 'Sumber: Wikimedia Commons — Daylogic Sheer Touch SPF 30 oleh Missvain (CC BY 4.0)' },
-  { name: 'Emina Face Wash Series', price: 'Rp 25–35rb', badge: 'Teruji', stock: 'Tanya Stok', image: '/images/narina-p6.jpg', alt: 'Produk Emina — foto resmi eminacosmetics.com, varian pasti konfirmasi via WA', w: 230, h: 230, source: 'Sumber: eminacosmetics.com (official)' },
-  { name: 'Scarlett Lotion Series', price: 'Rp 55–70rb', badge: 'Estimasi', stock: 'Tanya Stok', image: '/images/narina-p7.jpg', alt: 'Ilustrasi generik botol losion perawatan kulit — bukan foto produk Scarlett, konfirmasi varian via WA', w: 800, h: 664, source: 'Sumber: Wikimedia Commons — After-Sun-Lotion oleh Tamina212 (CC BY-SA 4.0)' },
-  { name: 'OMG Lip Cream Series', price: 'Rp 20–30rb', badge: 'Estimasi', stock: 'Tanya Stok', image: '/images/narina-p8.jpg', alt: 'Ilustrasi generik deretan lipstik tester — bukan foto produk OMG, konfirmasi varian via WA', w: 800, h: 536, source: 'Sumber: Wikimedia Commons — Batons Make B SPFW oleh O Boticário SPFW (CC BY 2.0)' },
+  { name: 'Skintific 5X Ceramide Series', price: 'Rp 130–155rb', badge: 'Teruji', stock: 'Tanya Stok', image: '/images/narina-p1.webp', alt: 'Skintific 5X Ceramide Barrier Repair Moisture Gel — foto resmi brand', w: 800, h: 800, source: 'Sumber: skintific.com (official)' },
+  { name: 'Glad2Glow Centella Series', price: 'Rp 55–75rb', badge: 'Teruji', stock: 'Tanya Stok', image: '/images/narina-p2.webp', alt: 'Glad2Glow Centella Allantoin Soothing Gel Moisturizer — foto resmi brand', w: 800, h: 800, source: 'Sumber: glad2glow.com (official)' },
+  { name: 'Facetology Sunscreen Series', price: 'Rp 65–85rb', badge: 'Teruji', stock: 'Tanya Stok', image: '/images/narina-p3.webp', alt: 'Facetology Triple Care Sunscreen SPF 40 — foto resmi brand', w: 800, h: 800, source: 'Sumber: facetology.id (official)' },
+  { name: 'Azarine Hydrasoothe Series', price: 'Rp 60–75rb', badge: 'Estimasi', stock: 'Tanya Stok', image: '/images/narina-p4.webp', alt: 'Ilustrasi generik kemasan tin krim pelembap — bukan foto produk Azarine, konfirmasi varian via WA', w: 640, h: 748, source: 'Sumber: Wikimedia Commons — Nivea Creme oleh Susana22BN (CC BY-SA 4.0)' },
+  { name: 'Wardah UV Shield Series', price: 'Rp 35–50rb', badge: 'Estimasi', stock: 'Tanya Stok', image: '/images/narina-p5.webp', alt: 'Ilustrasi generik tube sunscreen lotion SPF 30 — bukan foto produk Wardah, konfirmasi varian via WA', w: 600, h: 800, source: 'Sumber: Wikimedia Commons — Daylogic Sheer Touch SPF 30 oleh Missvain (CC BY 4.0)' },
+  { name: 'Emina Face Wash Series', price: 'Rp 25–35rb', badge: 'Teruji', stock: 'Tanya Stok', image: '/images/narina-p6.webp', alt: 'Produk Emina — foto resmi eminacosmetics.com, varian pasti konfirmasi via WA', w: 230, h: 230, source: 'Sumber: eminacosmetics.com (official)' },
+  { name: 'Scarlett Lotion Series', price: 'Rp 55–70rb', badge: 'Estimasi', stock: 'Tanya Stok', image: '/images/narina-p7.webp', alt: 'Ilustrasi generik botol losion perawatan kulit — bukan foto produk Scarlett, konfirmasi varian via WA', w: 800, h: 664, source: 'Sumber: Wikimedia Commons — After-Sun-Lotion oleh Tamina212 (CC BY-SA 4.0)' },
+  { name: 'OMG Lip Cream Series', price: 'Rp 20–30rb', badge: 'Estimasi', stock: 'Tanya Stok', image: '/images/narina-p8.webp', alt: 'Ilustrasi generik deretan lipstik tester — bukan foto produk OMG, konfirmasi varian via WA', w: 800, h: 536, source: 'Sumber: Wikimedia Commons — Batons Make B SPFW oleh O Boticário SPFW (CC BY 2.0)' },
 ];
 
 export const promos = [
