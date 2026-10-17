@@ -25,7 +25,8 @@ const {
     <ol class="md:col-span-6 md:col-start-7 border-t border-moss/40">
       {steps.map((s, i) => (
         <li class="need-row grid grid-cols-[auto_1fr] gap-4 sm:gap-6 py-6 border-b border-moss/30 min-w-0" style={`--i:${i}`}>
-          <span class="font-display text-3xl sm:text-4xl leading-none text-blush sm:text-accent" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+          <!-- angka langkah memakai aksen (bukan blush) agar lolos kontras AA di semua lebar layar -->
+          <span class="font-display text-3xl sm:text-4xl leading-none text-accent" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
           <div class="min-w-0">
             <h3 class="font-display text-xl sm:text-2xl leading-snug">{s.t}</h3>
             <p class="mt-1.5 text-[15px] leading-relaxed text-ink-soft max-w-[46ch]">{s.d}</p>

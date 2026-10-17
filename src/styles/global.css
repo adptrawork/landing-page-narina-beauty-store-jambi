@@ -76,16 +76,36 @@ textarea:focus-visible,
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Kolase hero: foto utama melebur ke paper (mask, bukan glow) */
-.photo-fade {
-  -webkit-mask-image: linear-gradient(to right, #000 78%, transparent 100%);
-  mask-image: linear-gradient(to right, #000 78%, transparent 100%);
+/* Hero apothecary: garis rambut menggambar diri — transform (scaleX) saja */
+.rule-draw {
+  transform-origin: left center;
+  animation: ruleIn 0.9s var(--ease-botanical) both;
+  animation-delay: calc(var(--i, 0) * 90ms);
 }
-@media (max-width: 767px) {
-  .photo-fade {
-    -webkit-mask-image: linear-gradient(to bottom, #000 84%, transparent 100%);
-    mask-image: linear-gradient(to bottom, #000 84%, transparent 100%);
-  }
+@keyframes ruleIn {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+/* Busur arch foto naik pelan (scale + translate + opacity saja) */
+.arch-reveal {
+  transform-origin: 50% 100%;
+  animation: archIn 1s var(--ease-botanical) both;
+  animation-delay: 0.28s;
+}
+@keyframes archIn {
+  from { opacity: 0; transform: translateY(18px) scale(0.97); }
+  to { opacity: 1; transform: none; }
+}
+
+/* Segel foto toko muncul belakangan, sedikit berputar (transform + opacity saja) */
+.seal-reveal {
+  animation: sealIn 0.8s var(--ease-botanical) both;
+  animation-delay: 0.55s;
+}
+@keyframes sealIn {
+  from { opacity: 0; transform: scale(0.82) rotate(-6deg); }
+  to { opacity: 1; transform: none; }
 }
 
 /* Rak katalog bergaya editorial: zoom foto halus saat hover */
@@ -113,7 +133,11 @@ textarea:focus-visible,
 .filter-btn[aria-pressed="true"]:hover { color: var(--paper); }
 
 @media (prefers-reduced-motion: reduce) {
-  .reveal { animation: none; }
+  /* Reduced-motion: hero tampil utuh tanpa animasi */
+  .reveal,
+  .rule-draw,
+  .arch-reveal,
+  .seal-reveal { animation: none; }
   html { scroll-behavior: auto; }
   .rack-row .rack-img,
   .rack-row:hover .rack-img { transition: none; transform: none; }
